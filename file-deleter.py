@@ -6,13 +6,11 @@ import argparse
     Takes a csv file located at filepath, scans the column filenameColumn, adds all values to returnDict
     as keys (with value True), and returns returnDict
 """
-def filenamesToDict(filepath, filenameColumn='Filenames', headersExist=True):
+def filenamesToDict(filepath, filenameColumn='Filenames'):
     returnDict = {}
 
     with open(filepath, newline='') as csvfile:
         csvReader = csv.DictReader(csvfile)
-        if headersExist:
-            next(csvReader)
         for row in csvReader:
             filename = row[filenameColumn]
             if filename not in returnDict:
@@ -46,11 +44,10 @@ parser = argparse.ArgumentParser(description='Delete files in this directory and
 parser.add_argument('csvPath', help='the path of the csv file to read from')
 parser.add_argument('-dPath', default=os.getcwd(), help='the directory in which to start deletion (defaults to cwd)')
 parser.add_argument('-cName', default='Filenames', help='the name of the csv column that identifies filenames (defaults to "Filenames")')
-parser.add_argument('-n', action='store_false', help="no headers/don't skip headers in your csv file")
 parser.add_argument('-s', action='store_false', help='shallow delete - only delete in directory at dPath, disregard subdirectories')
 
 args = parser.parse_args()
 
 if args.csvPath:
-    toDelete = filenamesToDict(args.csvPath, args.cName, args.n)
+    toDelete = filenamesToDict(args.csvPath, args.cName)
     deleteFiles(toDelete, args.dPath, args.s)

@@ -34,7 +34,7 @@ def deleteFiles(fileDict, path=os.getcwd(), deep=True):
                     filePath = f'{dirPath}/{file}'
                     os.remove(filePath)
     else:
-        dirPath = os.listdir(path)
+        directory = os.listdir(path)
         for file in directory:
             if file in fileDict:
                 os.remove(f'{path}/{file}')

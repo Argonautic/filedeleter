@@ -16,6 +16,7 @@ def filenamesToDict(filepath, filenameColumn='Filenames', headersExist=True, ret
                 returnDict[filename] = True
         return returnDict
 
+
 """
     From directory starting at path, delete all files that match a key in fileDict. Deep configures whether
     To only delete from current directory or to go down all subdirectories until end of tree
@@ -27,18 +28,16 @@ def deleteFiles(fileDict, path=os.getcwd(), deep=True):
             dirPath = directory[0]
             files = directory[2]
 
-            for file in files:
-                filePath = f'{dirPath}/{file}'
-                print(filePath)
-                if filePath in fileDict:
+            for file in files:                
+                if file in fileDict:
+                    filePath = f'{dirPath}/{file}'
                     os.remove(filePath)
     else:
-        directory = os.listdir(path)
+        dirPath = os.listdir(path)
         for file in directory:
-            print(f'{path}/{file}')
-            if file in fileDict:                
-                os.remove(filePath)
+            if file in fileDict:
+                os.remove(f'{path}/{file}')
 
 
 toDelete = filenamesToDict('to-delete.csv')
-deleteFiles(toDelete, deep=False)
+deleteFiles(toDelete)

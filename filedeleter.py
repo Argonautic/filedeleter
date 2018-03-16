@@ -54,7 +54,7 @@ parser.add_argument('csvPath', help='the path of the csv file to read from')
 parser.add_argument('-dPath', default=os.getcwd(), help='the directory in which to start deletion (defaults to cwd)')
 parser.add_argument('-cName', default='Filenames', help='the name of the csv column that identifies filenames (defaults to "Filenames")')
 parser.add_argument('-w', action='store_false', help='whitelist - keep only files listed in csv and delete everything else')
-parser.add_argument('-s', action='store_false', help='shallow delete - only delete in directory at dPath, disregard subdirectories')
+parser.add_argument('-s', action='store_false', help='shallow delete - only delete in directory at -dPath, disregard subdirectories')
 
 args = parser.parse_args()
 

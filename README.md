@@ -6,10 +6,10 @@
 <p>
   Currently, filedeleter is designed as a command-line app, and the best way to use it is to clone or download this
   repository and run the app directly using <b>python3 filedeleter.py</b>. For ease of use, you may want to add a PATH to
-  your downloaded/cloned directory. All this to be automated in the future, or added to pip (if such a library doesn't already
+  your downloaded/cloned directory. All this to be automated in the future, or added to pip (if such a library doesn't    already
   exist).
   <br><br>
-  Python 2 version can be made if anyone wants it.
+  The only functional file is filedeleter.py, all other files and directories are just for testing and example. Python 2 version can be made if anyone wants it.
   <br><br>
   Command line arguments are as follows:
 </p>

@@ -1,5 +1,6 @@
 import csv
 import os
+import argparse
 
 """
     Takes a csv file located at filepath, scans the column filenameColumn, adds all values to returnDict
@@ -39,5 +40,13 @@ def deleteFiles(fileDict, path=os.getcwd(), deep=True):
                 os.remove(f'{path}/{file}')
 
 
-toDelete = filenamesToDict('to-delete.csv')
-deleteFiles(toDelete)
+parser = argparse.ArgumentParser(description='Delete files in this directory and subdirectories based on a .csv file')
+parser.add_argument('csvPath', help='the path of the csv file to read from')
+parser.add_argument('-dPath', default=os.getcwd(), help='the directory in which to start deletion (defaults to cwd)')
+parser.add_argument('-n', action='store_true', help="no headers/don't skip headers in your csv file")
+parser.add_argument('-s', action='store_true', help='shallow delete - only delete in directory at dPath, disregard subdirectories')
+
+args = parser.parse_args()
+
+# toDelete = filenamesToDict('to-delete.csv')
+# deleteFiles(toDelete)
